@@ -1,0 +1,45 @@
+
+
+#coloum{
+    text-align: center;
+    padding-top: 20%;
+    margin-left: 15%;
+}
+
+#box{
+    background-color: whitesmoke;
+}
+
+#heading_box{
+    background-color: white;
+    box-shadow: 1px 3px 3px #888888;;
+}
+
+#button_box{
+    background-color: white;
+    box-shadow: 1px 3px  5px #888888;;
+}
+
+#next{
+    float: right;
+}
+
+.heading1{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+#questions{
+    /* text-align: center; */
+    font-weight: bold;
+    font-size: 25px;
+font-family: 'Times New Roman', Times, serif;
+
+}
+
+#timerbtn{
+    float: right;
+    width: 30%;
+    font-weight: bold;
+    color: black;
+}

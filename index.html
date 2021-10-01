@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="col-md-12">
+            <div class="col-md-4"></div>
+            <div class="col-md-8" id="coloum">
+                <div class="card text-left" id="box">
+                    <div class="card-header" id="heading_box">
+                        <h1 class="heading1">Lets Start Your Quizz! <button type="button" id="timerbtn" class="btn btn-danger" disabled>Timer</button></h1>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="questions">Choose The Correct Answers {from the options like given below}</h5>
+                        <div id="option_box">
+                        <button type="button" id="opt1" class="btn btn-outline-info mt-4" style="width: 80%; text-align: left;">option1</button>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio1">
+                        <br>
+                        <button type="button" id="opt2" class="btn btn-outline-info mt-4" style="width: 80%; text-align: left;">option2 </button>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio2">
+                        <br>
+                        <button type="button" id="opt3" class="btn btn-outline-info mt-4" style="width: 80%; text-align: left;">option3</button>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio3">
+                        <br>
+                        <button type="button" id="opt4" class="btn btn-outline-info mt-4" style="width: 80%; text-align: left;">option4</button>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio4">
+                    </div>
+                    </div>
+                    <div class="card-footer text-muted"  id="button_box">
+                        
+                        <button type="button" id="next" class="btn btn-outline-primary" onclick="NextQuestion()">Next</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+<script>
+
+
+            const Questions = ["What is name of Pakistan founder?", "What's Pakistanis people favorite place in Pakistan?", "How many States are there in Pakistan?", "Where do you live?", "What is capital city of Pakistan"];
+            const optno1 = {
+                opt1: "Allama Iqbal",
+                opt2: "Quaid-e-Azam",
+                opt3: "Gandhi",
+                opt4: "Donald Trump",
+            };
+            const optno2 = {
+                opt1: "Sea View",
+                opt2: "Mazar Of Quaid",
+                opt3: "Hawks Bay",
+                opt4: "Islamabad",
+            };
+            const optno3 = {
+                opt1: "4",
+                opt2: "100",
+                opt3: "10",
+                opt4: "5",
+            };
+            const optno4 = {
+                opt1: "Karachi",
+                opt2: "Islamabad",
+                opt3: "KPK",
+                opt4: "Balochistan",
+            };
+            const optno5 = {
+                opt1: "Karachi",
+                opt2: "Islamabad",
+                opt3: "Lahore",
+                opt4: "Istanbul",
+            };
+
+
+            var score = 0;
+            var QCount = 0;
+            var btn = document.getElementById("next");
+            var timeleft = 30;
+
+            function NextQuestion() {
+
+                if (QCount >= Questions.length) {
+                
+                    if(score == 0){
+                        document.getElementById("questions").innerHTML = "Opps You failed by"  + " " + "'" + score + " " + "'" + "Marks" ; 
+                    }else if(score <= 10){
+                        document.getElementById("questions").innerHTML = "Good You Have Got"+ " " + "'" + score + " " + "'" + "Marks" ; 
+                    }
+                    else{
+                        document.getElementById("questions").innerHTML = "Congratulations You Have Got" + " " + "'" + score + " " + "'" + "Marks" ; 
+                    }
+                    document.getElementById("option_box").style.display = "none";
+                    document.getElementById("timerbtn").style.display = "none";
+                    document.getElementById("button_box").innerHTML = "Reload Page to start again!"
+                    return;
+
+                }
+
+                document.getElementById("questions").innerHTML = "";
+                QNumber = Questions[(Math.random() * Questions.length) | 0];
+
+                while (QNumber == null) {
+                    QNumber = Questions[(Math.random() * Questions.length) | 0];
+                }
+
+                document.getElementById("questions").innerHTML = QNumber;
+                Questions[Questions.indexOf(QNumber)] = null;
+                QCount++;
+
+                if (QNumber == 'What is name of Pakistan founder?') {
+
+                    document.getElementById('opt1').innerHTML = optno1.opt1;
+                    document.getElementById('opt2').innerHTML = optno1.opt2;
+                    document.getElementById('opt3').innerHTML = optno1.opt3;
+                    document.getElementById('opt4').innerHTML = optno1.opt4;
+
+                    if (document.getElementById('radio2').checked) {
+                        score = score + 5; 
+                    }
+
+                } else if (QNumber == "What's your favorite place in Pakistan?") {
+
+                    document.getElementById('opt1').innerHTML = optno2.opt1;
+                    document.getElementById('opt2').innerHTML = optno2.opt1;
+                    document.getElementById('opt3').innerHTML = optno2.opt1;
+                    document.getElementById('opt4').innerHTML = optno2.opt1;
+
+                    if (document.getElementById('radio1').checked) {
+                        score = score + 5;
+                    }
+
+                } else if (QNumber == 'How many States are there in Pakistan?') {
+
+                    document.getElementById('opt1').innerHTML = optno3.opt1;
+                    document.getElementById('opt2').innerHTML = optno3.opt2;
+                    document.getElementById('opt3').innerHTML = optno3.opt3;
+                    document.getElementById('opt4').innerHTML = optno3.opt4;
+
+                    if (document.getElementById('radio4').checked) {
+                        score = score + 5; 
+                    }
+
+                } else if (QNumber == "Where do you live?") {
+
+                    document.getElementById('opt1').innerHTML = optno4.opt1;
+                    document.getElementById('opt2').innerHTML = optno4.opt2;
+                    document.getElementById('opt3').innerHTML = optno4.opt3;
+                    document.getElementById('opt4').innerHTML = optno4.opt4;
+
+                    if (document.getElementById('radio1').checked) {
+                        score += 5; 
+                    }
+
+                } else if (QNumber == 'What is capital of Pakistan') {
+
+                    document.getElementById('opt1').innerHTML = optno5.opt1;
+                    document.getElementById('opt2').innerHTML = optno5.opt2;
+                    document.getElementById('opt3').innerHTML = optno5.opt3;
+                    document.getElementById('opt4').innerHTML = optno5.opt4;
+
+                    if (document.getElementById('radio2').checked) {
+                        score = score + 5;
+                    }    
+                };
+                
+            }
+
+        
+
+
+document.getElementById("next").addEventListener("click", function(){
+    var timeleft = 20;
+
+    var downloadTimer = setInterval(function function1(){
+    document.getElementById("timerbtn").innerHTML = timeleft + 
+    " "+"sec remaining";
+
+    timeleft -= 1;
+    if(timeleft <= 0){
+        clearInterval(downloadTimer);
+        document.getElementById("timerbtn").innerHTML = "Time is up!"
+    }
+    }, 1000);
+
+});
+
+        </script>
+</body>
+
+</html>
